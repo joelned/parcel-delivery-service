@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Courier Details</title>
+  <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 20px;
+            text-align: center;
+        }
+
+        h1 {
+            color: #4B0082;
+            margin-bottom: 20px;
+        }
+
+        .courier-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .courier-card {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin: 10px;
+            padding: 20px;
+            width: 300px;
+            text-align: left;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .courier-card:hover {
+            transform: scale(1.05);
+        }
+
+        .courier-card h2 {
+            color: #4B0082;
+            margin-bottom: 10px;
+        }
+
+        .courier-card p {
+            margin: 5px 0;
+            color: #333;
+        }
+
+        .courier-card p.label {
+            color: #555;
+            font-weight: bold;
+        }
+
+        .courier-card a {
+            text-decoration: none;
+            color: #0066cc;
+            transition: color 0.3s;
+        }
+
+        .courier-card a:hover {
+            color: #004080;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Courier Details</h1>
+
+<div class="courier-container">
+  <div class="courier-card">
+    <p class="label">Courier Id:</p>
+    <h2 th:text="${courier.courierId}"></h2><br>
+
+    <p class="label">First Name: </p>
+    <h2 th:text="${courier.firstName}"></h2><br>
+
+    <p class="label">Last Name: </p>
+    <h2 th:text="${courier.lastName}"></h2><br>
+
+    <p class="label">Phone Number: </p>
+    <h2 th:text="${courier.phoneNumber}"></h2><br>
+
+    <p class="label">Plate Number: </p>
+    <h2 th:text="${courier.vehicleNumber}"></h2>
+  </div>
+
+</div>
+
+</body>
+</html>

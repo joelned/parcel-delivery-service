@@ -360,7 +360,7 @@ event.preventDefault();
  const email = signInForm.elements["email"].value;
  const password = signInForm.elements["password"].value;
  const loginStatus = document.getElementById("loginStatus");
- const url2 = "http://localhost:8092/form"
+ const url2 = "http://localhost:8092/form";
  const data = {
  "email": email,
  "hashedPassword": password
@@ -385,6 +385,7 @@ event.preventDefault();
  		else{
  		signInForm.reset();
  		loginStatus.textContent = "Login Successful";
+ 		loginStatus.classList.remove("red-text");
  		loginStatus.classList.add("green-text");
 
  		setTimeout(() => {

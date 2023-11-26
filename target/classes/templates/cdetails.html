@@ -120,7 +120,7 @@
             "email": email,
             "phoneNumber": phoneNumber
         }
-        url = "http://perpetual-discussion-production.up.railway.app/createCustomer";
+        url = "http://localhost:8092/createCustomer";
         fetch(url, {
             method: "POST",
             headers: {
@@ -134,7 +134,7 @@
         )
         .then(html => {
         myForm.reset();
-        window.location.href = "http://perpetual-discussion-production.up.railway.app/recipient";
+        window.location.href = "http://localhost:8092/recipient";
         })
         .catch(error => {
             console.error("Error: ", error);

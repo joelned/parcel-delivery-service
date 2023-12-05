@@ -5,9 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.Random;
-
 @Controller
 public class ParcelController {
     Random random = new Random();
@@ -20,10 +18,10 @@ public class ParcelController {
     @PostMapping("/createParcel")
     public String createParcel(@ModelAttribute Parcel parcel, Model model) {
         String parcelTypeandDescription = parcel.getParcelDescription();
-        Integer price = random.nextInt(30000,300000) ;
+        Integer price = random.nextInt(20000,40000) ;
         model.addAttribute("parcel", parcelTypeandDescription);
-        model.addAttribute("price", price);
-        parcelService.createParcel(parcel);
+        model.addAttribute("price", "N"+price);
+         parcelService.createParcel(parcel);
         return "payment";
     }
 }

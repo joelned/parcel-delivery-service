@@ -1,6 +1,8 @@
 package com.example.School.Services;
 import com.example.School.Entities.Orders;
+import com.example.School.Entities.Parcel;
 import com.example.School.Repositories.OrdersRepository;
+import com.example.School.Repositories.ParcelRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.ArrayList;
@@ -12,8 +14,12 @@ public class OrdersService {
 Random random = new Random();
     @Autowired
     private final OrdersRepository ordersRepository;
-    public OrdersService(OrdersRepository parcelRepository) {
+
+    private final ParcelRepository parcelRepository;
+    public OrdersService(OrdersRepository parcelRepository, ParcelRepository parcelRepository1) {
         this.ordersRepository = parcelRepository;
+
+        this.parcelRepository = parcelRepository1;
     }
 
     private List<Orders> orders = new ArrayList<>();

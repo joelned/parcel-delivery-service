@@ -15,23 +15,17 @@ public class RecipientService {
     private final OrdersService ordersService;
     private final OrdersRepository ordersRepository;
 
-    private final Orders orders;
-
 
     @Autowired
-    public RecipientService(RecipientRepository recipientRepository, OrdersService ordersService, OrdersRepository ordersRepository, Orders orders) {
+    public RecipientService(RecipientRepository recipientRepository, OrdersService ordersService, OrdersRepository ordersRepository) {
         this.recipientRepository = recipientRepository;
         this.ordersService = ordersService;
         this.ordersRepository = ordersRepository;
-        this.orders = orders;
     }
 
 
 
     public void saveRecipient(Recipient recipient){
         recipientRepository.save(recipient);
-
-        orders.setRecipient(recipient);
-        ordersRepository.save(orders);
     }
 }

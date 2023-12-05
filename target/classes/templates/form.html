@@ -1,94 +1,110 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shipping Form</title>
+    <title>Styled Form</title>
     <style>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #f4f4f4;
+            background: linear-gradient(to right, #4f9da6, #005792); /* Gradient background */
             margin: 0;
-            padding: 0;
             display: flex;
-            justify-content: center;
+            flex-direction: column;
             align-items: center;
+            justify-content: center;
             height: 100vh;
+            color: #fff;
+        }
+
+        h1 {
+            font-size: 28px;
+            margin-bottom: 10px;
         }
 
         form {
-            background-color: #ffffff;
-            padding: 30px;
+            background-color: rgba(255, 255, 255, 0.8); /* Slight white background with transparency */
+            padding: 20px;
             border-radius: 8px;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-            width: 400px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            color: #265172;
+            width: 300px;
+            max-width: 100%;
+            text-align: center;
+            margin-top: 5vh;
+            margin-bottom: 5vh;
         }
 
         label {
             display: block;
             margin-bottom: 8px;
             font-weight: bold;
-            color: #333;
+            color: #265172;
         }
 
-        input, textarea, select {
+        .input {
             width: 100%;
             padding: 10px;
             margin-bottom: 16px;
             box-sizing: border-box;
-            border: 1px solid #ccc;
+            border: 1px solid #265172;
             border-radius: 4px;
-            font-size: 16px;
+            background-color: #f2f2f2; /* Light gray form field background color */
+            color: #333; /* Darker form field text color */
+            transition: border-color 0.3s;
         }
 
-        textarea {
-            resize: vertical;
-        }
-
-        button {
-            background-color: #4caf50;
+        .input[type="submit"] {
+            background-color: #32cd32;
             color: #fff;
-            padding: 12px 20px;
-            border: none;
-            border-radius: 4px;
             cursor: pointer;
+            border: none;
+            padding: 12px;
             font-size: 16px;
+            border-radius: 4px;
+            transition: background-color 0.3s, color 0.3s;
         }
 
-        button:hover {
-            background-color: #45a049;
+        .input[type="submit"]:hover {
+            background-color: #2db92d;
+        }
+
+        .input:focus {
+            border-color: #265172;
+        }
+
+        hr {
+            border: none;
+            border-top: 1px solid #265172;
+            margin: 16px 0;
+        }
+
+        @media only screen and (max-width: 600px) {
+            form {
+                width: 80%;
+            }
         }
     </style>
 </head>
 <body>
+<h1>Customer Details</h1>
+<form id="myForm" th:action="@{/createCustomer}" th:object="${customer}" method="post">
+    <label for="firstName">First Name</label>
+    <input class="input" type="text" id="firstName" name="firstName" autocomplete="firstName" required/>
 
-    <form>
-        <label for="firstName">First Name:</label>
-        <input type="text" id="firstName" name="firstName" required>
+    <label for="lastName">Last Name</label>
+    <input class="input" type="text" id="lastName" name="lastName" autocomplete="lastName" required/>
 
-        <label for="lastName">Last Name:</label>
-        <input type="text" id="lastName" name="lastName" required>
+    <label for="email">Email</label>
+    <input class="input" type="email" id="email" name="email" autocomplete="email" required/>
 
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" required>
+    <label for="phoneNumber">Phone Number</label>
+    <input class="input" type="tel" id="phoneNumber" name="phoneNumber" autocomplete="phoneNumber" required/>
 
-        <label for="phoneNumber">Phone Number:</label>
-        <input type="tel" id="phoneNumber" name="phoneNumber" required>
-
-        <label for="fromAddress">From Address:</label>
-        <input type="text" id="fromAddress" name="fromAddress" required>
-
-        <label for="toAddress">To Address:</label>
-        <input type="text" id="toAddress" name="toAddress" required>
-
-        <label for="content">Content:</label>
-        <textarea id="content" name="content" rows="4" required></textarea>
-
-        <label for="weight">Weight (kg):</label>
-        <input type="number" id="weight" name="weight" required>
-
-        <button type="submit">Submit</button>
-    </form>
-
+    <input type="submit" class="input" id="submit"/>
+</form>
+<script>
+    // Your JavaScript code here
+</script>
 </body>
 </html>

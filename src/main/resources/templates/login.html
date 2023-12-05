@@ -329,26 +329,25 @@ saveRegistrationData.addEventListener('click', async () => {
         "hashedPassword": password,
         "name": name
     }
-    const url = "http://oandjparcel.up.railway.app/register";
+    const url = "http://localhost:8092/register";
 
 
-   const response = await fetch(url, {
+   fetch(url, {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
         },
         body: JSON.stringify(postData)
-    });
-    const data = await response.text()
-    .then(data => {
+    })
+    .then(response => {
         if (!response.ok) {
-        form.reset();
-        statusSpan.textContent = data;
-        statusSpan.classList.add("red-text");
+      		console.log("Response Unsuccessful");
         }
-        form.reset();
-        statusSpan.textContent = data;
-        statusSpan.classList.add("green-text");
+      else{
+      console.log("Response Successful");
+
+      }
+
   })
     .catch(error => {
         console.error('Error:', error);
@@ -366,7 +365,7 @@ event.preventDefault();
  "hashedPassword": password
 
  }
-  url = "http://oandjparcel.up.railway.app/login";
+  url = "http://localhost:8092/login";
  fetch(url, {
  	method: "POST",
  	headers: {
@@ -395,7 +394,7 @@ event.preventDefault();
     })
         .then(response => response.text())
         .then(html =>{
-        window.location.href = "http://oandjparcel.up.railway.app/form";
+        window.location.href = "http://localhost:8092/form";
         })
         .catch(error => {
             console.error("Error: ", error);

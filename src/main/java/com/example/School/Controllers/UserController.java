@@ -1,6 +1,4 @@
-
 package com.example.School.Controllers;
-
 import com.example.School.Entities.User;
 import com.example.School.Repositories.UserRepository;
 import com.example.School.Services.UserService;
@@ -9,7 +7,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 
 
@@ -23,21 +20,11 @@ public class UserController {
         this.userRepository = userRepository;
         this.userService = userService;
     }
-
-
     @PostMapping("/register")
-    public ResponseEntity<Object> register(@RequestBody User user, Model model) {
-        List<User> users= userRepository.findUsersByEmail(user.getEmail());
-        String userAlreadyExists = "User Already Exists";
-        String success = "Registration Successful";
-        if(!users.isEmpty()) {
-         return new ResponseEntity<>(userAlreadyExists, HttpStatus.UNAUTHORIZED);
-        }
+    public ResponseEntity<Object> register(@RequestBody User user) {
         userService.createUser(user);
-        return new ResponseEntity<>(success, HttpStatus.OK);
+        return new ResponseEntity<>("User Created", HttpStatus.OK);
         }
-
-
 
     @PostMapping("/login")
     public ResponseEntity<Object> login(@RequestBody User user, Model model) {

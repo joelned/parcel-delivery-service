@@ -7,8 +7,7 @@ import java.util.List;
 
 import com.example.School.Entities.User;
 import com.example.School.Repositories.UserRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -17,12 +16,18 @@ public class UserService {
     private final UserRepository userRepository;
 
 
-    @Autowired
+
+
     public UserService(UserRepository userRepository) {
         this.userRepository = userRepository;
+
     }
 
     public void createUser(User user) {
+        List<User> users= userRepository.findUsersByEmail(user.getEmail());
+        if(!users.isEmpty()){
+            throw new RuntimeException("User already exists");
+        }
         user.setName(user.getName());
         user.setEmail(user.getEmail());
         user.setHashedPassword(hashPassword(user.getHashedPassword()));

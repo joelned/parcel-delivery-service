@@ -14,25 +14,26 @@ public class CourierService {
     @Autowired
     private final CourierRepository courierRepository;
 
+
     ArrayList<Couriers> couriers = new ArrayList<>();
 
     public CourierService(CourierRepository courierRepository) {
         this.courierRepository = courierRepository;
     }
 
-    public Couriers getCourier() {
+    public  Couriers getCourier() {
      List<Couriers> courier = courierRepository.findAll();
 
      if(courier.isEmpty()){
          return null;
      }
-
      Random random = new Random();
      int randomIndex = random.nextInt(courier.size());
 
      return courier.get(randomIndex);
 
     }
+
 
 
 

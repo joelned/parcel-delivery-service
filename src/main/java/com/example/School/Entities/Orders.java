@@ -15,16 +15,27 @@ public class Orders {
     )
     private Integer orderId;
 
-  @ManyToOne
+  @ManyToOne(cascade = CascadeType.ALL)
   @JoinColumn(name = "customerId")
     private Customer customer;
 
-  @ManyToOne
-  @JoinColumn(name = "deliveryDetailsId")
+  @ManyToOne(cascade = CascadeType.ALL)
+  @JoinColumn(name = "recipientId")
   private Recipient recipient;
+
 
   @OneToMany(mappedBy = "orders")
     private List<Parcel>parcels;
+
+  @ManyToOne(cascade = CascadeType.ALL)
+  @JoinColumn(name = "userId")
+    private User user;
+
+  @ManyToOne(cascade = CascadeType.ALL)
+  @JoinColumn(name = "courierId")
+    private Couriers couriers;
+
+
 
 
 }

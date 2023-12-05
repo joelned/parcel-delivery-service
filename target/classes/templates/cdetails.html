@@ -120,7 +120,7 @@
             "email": email,
             "phoneNumber": phoneNumber
         }
-        url = "http://oandjparcel.up.railway.app/createCustomer";
+        url = "http://localhost:3307/createCustomer";
         fetch(url, {
             method: "POST",
             headers: {
@@ -134,7 +134,7 @@
         )
         .then(html => {
         myForm.reset();
-        window.location.href = "http://oandjparcel.up.railway.app/recipient";
+        window.location.href = "http://localhost:8092/recipient";
         })
         .catch(error => {
             console.error("Error: ", error);

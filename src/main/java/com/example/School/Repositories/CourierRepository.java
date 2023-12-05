@@ -7,4 +7,6 @@ import java.util.List;
 
 public interface CourierRepository extends JpaRepository<Couriers, Integer> {
     List<Couriers> findAll();
+
+
 }

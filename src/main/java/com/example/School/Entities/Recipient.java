@@ -13,7 +13,7 @@ public class Recipient {
     @GeneratedValue(
             strategy = GenerationType.IDENTITY
     )
-    private Integer deliveryDetailsId;
+    private Integer recipientId;
     private String pickUpLocation;
     private String deliveryLocation;
     private String phoneNumber;
@@ -21,5 +21,15 @@ public class Recipient {
 
     @OneToMany(mappedBy = "recipient")
     private List<Orders>orders;
+
+    @OneToMany(mappedBy = "recipient")
+    private List<Couriers> couriers;
+
+    @OneToMany(mappedBy = "recipient")
+    private List<Parcel>parcel;
+
+
+
+
 
 }

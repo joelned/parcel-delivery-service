@@ -1,7 +1,8 @@
 package com.example.School.Entities;
-
 import jakarta.persistence.*;
 import lombok.Data;
+
+import java.util.List;
 
 @Entity
 @Table
@@ -38,5 +39,15 @@ public class Couriers {
     public String getVehicleNumber() {
         return vehicleNumber;
     }
+
+    @OneToMany(mappedBy = "couriers")
+    List<Parcel> parcel;
+
+    @OneToMany(mappedBy = "couriers")
+    List<Orders> orders;
+
+    @ManyToOne
+    @JoinColumn(name = "recipientId")
+    private Recipient recipient;
 
 }
